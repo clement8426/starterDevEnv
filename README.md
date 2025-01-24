@@ -1,4 +1,4 @@
-# README : Script de Configuration de l'Environnement de Développement
+Script de Configuration de l'Environnement de Développement
 
 ## Description
 
