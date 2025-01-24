@@ -102,6 +102,9 @@ function install_python() {
     "linux")
       apt install -y python3 python3-pip
       ;;
+    "windows")
+      winget install -e --id Python.Python.3
+      ;;
   esac
 }
 
@@ -112,6 +115,9 @@ function install_ruby() {
       ;;
     "linux")
       apt install -y ruby-full
+      ;;
+    "windows")
+      winget install -e --id RubyInstallerTeam.Ruby
       ;;
   esac
 }
@@ -125,6 +131,9 @@ function install_node() {
       curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
       apt install -y nodejs
       ;;
+    "windows")
+      winget install -e --id OpenJS.NodeJS
+      ;;
   esac
 }
 
@@ -135,6 +144,10 @@ function install_php() {
       ;;
     "linux")
       apt install -y php-cli composer
+      ;;
+    "windows")
+      winget install -e --id PHP.PHP
+      winget install -e --id Composer.Composer
       ;;
   esac
 }
@@ -147,6 +160,9 @@ function install_go() {
     "linux")
       apt install -y golang
       ;;
+    "windows")
+      winget install -e --id Golang.Go
+      ;;
   esac
 }
 
@@ -158,6 +174,9 @@ function install_java() {
     "linux")
       apt install -y openjdk-17-jdk
       ;;
+    "windows")
+      winget install -e --id Oracle.JavaRuntimeEnvironment
+      ;;
   esac
 }
 
@@ -165,6 +184,9 @@ function install_rust() {
   case "$OS_TYPE" in
     "macos"|"linux")
       curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+      ;;
+    "windows")
+      winget install -e --id Rustlang.Rustup
       ;;
   esac
 }
@@ -224,6 +246,7 @@ for item in "${frameworks[@]}"; do
   else
     install_tool "$name" "$install_func"
   fi
+
 done
 
 echo "=== Script terminé avec succès ==="
